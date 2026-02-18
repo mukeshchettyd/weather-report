@@ -1,0 +1,125 @@
+.weather-card {
+    padding: 2.5rem;
+    width: 100%;
+    margin-bottom: 2rem;
+    background: var(--card-color);
+}
+
+.weather-header {
+    margin-bottom: 2rem;
+}
+
+.location {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.location h1 {
+    font-size: 2.5rem;
+    color: var(--text-color);
+}
+
+.date {
+    color: var(--secondary-text);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.weather-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+.temp-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.weather-icon {
+    width: 120px;
+    height: 120px;
+    filter: drop-shadow(0 0 10px rgba(99, 102, 241, 0.3));
+}
+
+.temp-display {
+    display: flex;
+    flex-direction: column;
+}
+
+.current-temp {
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--text-color);
+}
+
+.condition-text {
+    font-size: 1.25rem;
+    text-transform: capitalize;
+    color: var(--secondary-text);
+    margin-top: 0.5rem;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    flex: 1;
+    max-width: 600px;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: var(--secondary-text);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+}
+
+.stat-value {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+@media (max-width: 1024px) {
+    .weather-main {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        width: 100%;
+        max-width: none;
+    }
+}
+
+@media (max-width: 640px) {
+    .location h1 {
+        font-size: 1.75rem;
+    }
+
+    .current-temp {
+        font-size: 3rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
