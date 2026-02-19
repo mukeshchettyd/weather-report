@@ -49,7 +49,7 @@ function App() {
         {!loading && !error && weather && (
           <div className="weather-content">
             <WeatherCard weather={weather} />
-            <Forecast forecast={forecast} />
+            {forecast && <Forecast forecast={forecast} />}
           </div>
         )}
 

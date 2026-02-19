@@ -49,7 +49,7 @@ export const useWeather = () => {
             setForecast(forecastData);
             updateHistory(weatherData.name);
         } catch (err) {
-            setError(err.response?.data?.message || 'City not found. Please try again.');
+            setError(err.message || err.response?.data?.message || 'City not found. Please try again.');
             setWeather(null);
             setForecast(null);
         } finally {
@@ -75,7 +75,8 @@ export const useWeather = () => {
                     setForecast(forecastData);
                     updateHistory(weatherData.name);
                 } catch (err) {
-                    setError('Failed to fetch weather for your location.');
+                    const msg = err.response?.data?.message || 'Failed to fetch weather for your location.';
+                    setError(msg.charAt(0).toUpperCase() + msg.slice(1));
                 } finally {
                     setLoading(false);
                 }

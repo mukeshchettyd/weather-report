@@ -33,13 +33,15 @@ const WeatherCard = ({ weather }) => {
                 </div>
 
                 <div className="stats-grid">
-                    <div className="stat-item">
-                        <Thermometer size={20} color="var(--primary)" />
-                        <div>
-                            <p className="stat-label">Min / Max</p>
-                            <p className="stat-value">{Math.round(main.temp_min)}° / {Math.round(main.temp_max)}°</p>
+                    {main.temp_min !== main.temp && (
+                        <div className="stat-item">
+                            <Thermometer size={20} color="var(--primary)" />
+                            <div>
+                                <p className="stat-label">Min / Max</p>
+                                <p className="stat-value">{Math.round(main.temp_min)}° / {Math.round(main.temp_max)}°</p>
+                            </div>
                         </div>
-                    </div>
+                    )}
                     <div className="stat-item">
                         <Droplets size={20} color="#3b82f6" />
                         <div>
@@ -51,23 +53,27 @@ const WeatherCard = ({ weather }) => {
                         <Wind size={20} color="#10b981" />
                         <div>
                             <p className="stat-label">Wind Speed</p>
-                            <p className="stat-value">{wind.speed} m/s</p>
+                            <p className="stat-value">{wind.speed} {weather.isWeatherStack ? 'km/h' : 'm/s'}</p>
                         </div>
                     </div>
-                    <div className="stat-item">
-                        <Sunrise size={20} color="#f59e0b" />
-                        <div>
-                            <p className="stat-label">Sunrise</p>
-                            <p className="stat-value">{formatTime(sys.sunrise)}</p>
+                    {sys.sunrise !== 0 && (
+                        <div className="stat-item">
+                            <Sunrise size={20} color="#f59e0b" />
+                            <div>
+                                <p className="stat-label">Sunrise</p>
+                                <p className="stat-value">{formatTime(sys.sunrise)}</p>
+                            </div>
                         </div>
-                    </div>
-                    <div className="stat-item">
-                        <Sunset size={20} color="#f97316" />
-                        <div>
-                            <p className="stat-label">Sunset</p>
-                            <p className="stat-value">{formatTime(sys.sunset)}</p>
+                    )}
+                    {sys.sunset !== 0 && (
+                        <div className="stat-item">
+                            <Sunset size={20} color="#f97316" />
+                            <div>
+                                <p className="stat-label">Sunset</p>
+                                <p className="stat-value">{formatTime(sys.sunset)}</p>
+                            </div>
                         </div>
-                    </div>
+                    )}
                 </div>
             </div>
         </div>
